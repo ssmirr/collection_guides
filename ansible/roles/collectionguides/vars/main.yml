@@ -1,0 +1,21 @@
+---
+# database.yml template vars
+database_host: localhost
+database: daev
+database_username: daev
+database_password: daev
+database_socket: /var/lib/mysql/mysql.sock
+
+# application.yml template vars
+solr_host: localhost
+solr_port: '8983'
+solr_core_path: /solr/daev/
+archivesspace_host: localhost
+archivesspace_url_host: localhost
+archivesspace_port: '8089'
+archivesspace_frontend_port: '8080'
+archivesspace_solr_port: '8090'
+archivesspace_solr_path: '/collection1/'
+archivesspace_username: admin
+archivesspace_password: admin
+archivesspace_https: true
