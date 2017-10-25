@@ -19,3 +19,5 @@ archivesspace_solr_path: '/collection1/'
 archivesspace_username: admin
 archivesspace_password: admin
 archivesspace_https: true
+
+bundler_executable_path: "~/.rvm/gems/{{ruby_version}}/wrappers/bundle"

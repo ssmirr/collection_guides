@@ -2,7 +2,7 @@
 - hosts: collectionguides
   gather_facts: yes
   vars:
-    - ruby_version: ruby-2.3.1
+    - ruby_version: ruby-2.4.2
     - project_name: daev
   roles:
     - role: mariadb
@@ -16,7 +16,7 @@
       rvm1_rubies:
         - "{{ ruby_version }}"
       rvm1_bundler_install: True
-      rvm1_user: 'vagrant'
+      rvm1_user: "{{ansible_user}}"
       rvm1_rvm_version: 'stable'
       rvm1_autolib_mode: 3
 

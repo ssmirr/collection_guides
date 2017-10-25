@@ -6,12 +6,12 @@
   with_items:
     - git
 
-- name: ensure mysql2 gem is installed
-  become: true
-  become_user: "{{ansible_user}}"
-  gem:
-    name: mysql2
-    state: latest
+# - name: ensure mysql2 gem is installed
+#   become: true
+#   become_user: "{{ansible_user}}"
+#   gem:
+#     name: mysql2
+#     state: latest
 
 - name: adding database.yml config
   template:
@@ -25,8 +25,21 @@
     dest: "/vagrant/config/application.yml"
     mode: 0700
 
+- name: commenting out ncsu plugin in gemfile
+  replace:
+    dest: /vagrant/Gemfile
+    regexp: "^gem 'ncsul_web', git: 'git@github.ncsu.edu:ncsu-libraries/ncsul_web-rails.git'\n"
+    replace: "#gem 'ncsul_web', git: 'git@github.ncsu.edu:ncsu-libraries/ncsul_web-rails.git'"
+
+
+- name: bundle install
+  bundler:
+    state: present
+    executable: "{{bundler_executable_path}}"
+    chdir: "/vagrant"
+
 - name: generating secrets
-  command: bundle exec rake secret
+  command: "{{bundler_executable_path}} exec rake secret"
   register: secret_key_base
 
 - name: adding secrets.yml config
@@ -34,3 +47,8 @@
     src: templates/secrets.j2
     dest: "/vagrant/config/secrets.yml"
     mode: 0700
+
+- name: run rake scripts
+  command: "{{bundler_executable_path}} exec rake {{item}}"
+  with_items:
+    - db:migrate RAILS_ENV=development
