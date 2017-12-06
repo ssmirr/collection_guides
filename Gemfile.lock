@@ -1,8 +1,8 @@
 GIT
-  remote: git@github.com:trevorthornton/archivesspace-api-utility.git
-  revision: 5079036ffb24792f3a1886e1e146b6f120a64bd0
+  remote: https://github.com/trevorthornton/archivesspace-api-utility.git
+  revision: 3df39a33e77ccda5525914f6a96c5bf4a167b361
   specs:
-    archivesspace-api-utility (0.0.6.3)
+    archivesspace-api-utility (0.0.7)
 
 GEM
   remote: https://rubygems.org/
@@ -311,4 +311,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   1.14.6
+   1.15.4
